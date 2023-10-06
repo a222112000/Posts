@@ -9,13 +9,16 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
 import space.stanton.technicaltest.brightones.features.post.ui.PostScreen
+import space.stanton.technicaltest.brightones.features.post.ui.ScreenRoutes
 import space.stanton.technicaltest.brightones.ui.theme.BrightonesTheme
 
 /**
  * Please carefully read the README, in the root project directory,
  * in order to complete this tech task.
  */
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +32,8 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun MainNavigation() {
         val navHostController = rememberNavController()
-        NavHost(navController = navHostController, startDestination = "post") {
-            composable(route = "post") {
+        NavHost(navController = navHostController, startDestination = ScreenRoutes.Posts.route) {
+            composable(route = ScreenRoutes.Posts.route) {
                 PostScreen(modifier = Modifier.fillMaxSize())
             }
         }

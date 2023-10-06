@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -16,22 +18,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import space.stanton.technicaltest.brightones.features.post.model.Post
+import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import space.stanton.technicaltest.brightones.features.post.data.model.Post
 import space.stanton.technicaltest.brightones.features.post.viewmodel.PostViewModel
 
 @Composable
-fun PostScreen(modifier: Modifier = Modifier) {
-    val viewModel = PostViewModel()
+fun PostScreen(modifier: Modifier = Modifier,postViewModel: PostViewModel = hiltViewModel()) {
 
-    val posts by viewModel.posts.collectAsState()
+    val posts = postViewModel.posts.value.posts
 
-    PostView(
-        modifier = modifier,
-        posts = posts,
-        postViewModel = viewModel,
-        loadPost = viewModel::loadPost
-    )
+    if (posts != null) {
+        PostView(
+            modifier = modifier,
+            posts = posts,
+            postViewModel = postViewModel,
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -40,24 +45,25 @@ fun PostView(
     modifier: Modifier,
     posts: List<Post>,
     postViewModel: PostViewModel,
-    loadPost: () -> Unit
 ) {
-
-    loadPost()
 
     Scaffold(
         modifier = modifier,
         topBar = {
-            TopAppBar(title = { Text(text = "Post List") })
+            TopBar("Post List")
         }
     ) { padding ->
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(padding)
         ) {
-            posts.filter { it.body != null }.sortedBy { it.id }.forEach {
-                PostView(post = it, postViewModel = postViewModel)
-                Divider(modifier = Modifier.padding(top = 8.dp, bottom = 16.dp))
+            LazyColumn {
+                items(posts) {
+                    posts.filter { it.body != null }.sortedBy { it.id }.forEach {
+                        PostView(post = it, postViewModel = postViewModel)
+                        Divider(modifier = Modifier.padding(top = 8.dp, bottom = 16.dp))
+                    }
+                }
             }
         }
     }
@@ -77,10 +83,11 @@ fun PostView(post: Post, postViewModel: PostViewModel) {
     ) {
         Text(
             text = post.title,
-            style = MaterialTheme.typography.titleSmall
+            style = MaterialTheme.typography.titleSmall,
+            fontWeight = FontWeight.Bold
         )
         post.body?.let {
-            Text(text = it)
+            Text(text = it, fontSize = 14.sp)
         }
     }
 }

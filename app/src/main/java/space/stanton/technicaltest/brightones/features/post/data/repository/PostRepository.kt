@@ -1,9 +1,9 @@
-package space.stanton.technicaltest.brightones.features.post.repository
+package space.stanton.technicaltest.brightones.features.post.data.repository
 
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import space.stanton.technicaltest.brightones.features.post.model.Post
+import space.stanton.technicaltest.brightones.features.post.data.model.Post
 
 class PostRepository {
 

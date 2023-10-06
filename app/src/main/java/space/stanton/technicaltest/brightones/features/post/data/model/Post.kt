@@ -1,6 +1,6 @@
-package space.stanton.technicaltest.brightones.features.post.model
+package space.stanton.technicaltest.brightones.features.post.data.model
 
-class Post (
+data class Post (
     val id: Int,
     val userId: Int,
     val title: String,
