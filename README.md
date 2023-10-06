@@ -1,3 +1,7 @@
+<table>
+    <tr><th></th></tr>
+    <tr><tb><img width="403" alt="Screenshot 2023-10-06 at 08 04 29" src="https://github.com/a222112000/Posts/assets/26028054/b1258bed-b34b-4a5b-90ba-8099507770bd"></tb></tr>
+</table>
 # Bright Android Technical Test 2023
 
 This project forms the basis for the technical task for Android developer applicants.
