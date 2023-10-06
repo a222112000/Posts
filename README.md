@@ -1,6 +1,9 @@
 <table>
-    <tr><th></th></tr>
-    <tr><tb><img width="403" alt="Screenshot 2023-10-06 at 08 04 29" src="https://github.com/a222112000/Posts/assets/26028054/b1258bed-b34b-4a5b-90ba-8099507770bd"></tb></tr>
+    <tr><th></th><th></th><th></th></tr>
+    <tr><tb><img width="403" alt="Screenshot 2023-10-06 at 08 04 29" src="https://github.com/a222112000/Posts/assets/26028054/b1258bed-b34b-4a5b-90ba-8099507770bd"></tb>
+        <tb><img width="408" alt="Screenshot 2023-10-06 at 09 30 11" src="https://github.com/a222112000/Posts/assets/26028054/28188179-a1d1-4325-8016-f6ebeb5c3942"></tb>
+        <tb><img width="401" alt="Screenshot 2023-10-06 at 09 30 01" src="https://github.com/a222112000/Posts/assets/26028054/4dacd84e-25b1-47e9-8cc4-28cee2a42886"></tb>
+    </tr>
 </table>
 # Bright Android Technical Test 2023
 
